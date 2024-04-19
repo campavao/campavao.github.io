@@ -138,10 +138,28 @@ body {
   gap: 4px;
 }
 
+
 @media screen and (max-width: 765px) {
+  html {
+    overflow-x: hidden
+  }
+
+  body {
+    height: unset;
+  }
+
+  #keyboard {
+    padding: 10px;
+    margin: 0;
+  }
   .image-container a {
     display: flex;
     flex-direction: column
+  }
+
+  .key,
+  .space-bar::after {
+    max-width: unset;
   }
 }
 
