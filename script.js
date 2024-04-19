@@ -197,3 +197,5 @@ const ALL_PAGES = Object.keys(pages);
 const randomIndex = Math.floor(Math.random() * ALL_PAGES.length);
 const randomPage = ALL_PAGES[randomIndex];
 input.placeholder = randomPage;
+
+input.classList.toggle("cursor-blink");

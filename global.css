@@ -29,7 +29,7 @@ body {
   font-style: normal;
 }
 
-input {
+.ani-input {
   width: 100%;
   height: 36px;
   font-family: "Jersey 25", sans-serif;
@@ -39,6 +39,7 @@ input {
   border-bottom: 2px solid var(--dark-green);
   outline: none;
   text-align: center;
+  position: relative; /* Positioning context for cursor */
 }
 
 #keyboard {
