@@ -9,70 +9,103 @@ const ALL_KEYS = KEYS.flat();
 
 const input = document.getElementById("input");
 
-for (const keyList of KEYS) {
-  const container = document.createElement("div");
-  container.className = "key-row";
+function createKeys(keys = KEYS) {
+  keys.forEach((keyList, keyListIndex) => {
+    const id = keyListIndex + "-row";
+    let container;
+    const foundRow = document.getElementById(id);
 
-  for (const key of keyList) {
-    const keyButton = document.createElement("button");
-    if (key === " ") {
-      keyButton.classList.add("space-bar");
-    }
-    if (key === "⬅" || key === "⤶") {
-      keyButton.classList.add("backspace");
-    }
-    keyButton.id = key;
-    keyButton.innerText = key;
-    keyButton.classList.add("key");
-    if (key === "⤶") {
-      keyButton.type = "submit";
+    if (foundRow) {
+      container = foundRow;
+    } else {
+      container = document.createElement("div");
+      container.id = id;
+      container.className = "key-row";
     }
 
-    const spaceSound = new Audio("spacebar.wav");
-    const keySound = new Audio("key.wav");
-
-    const onClick = (e) => {
-      keyButton.classList.add("click");
-      if (key !== "⤶") {
-        e.preventDefault();
-        if (key === "⬅") {
-          input.value = removeValue(input);
-        } else {
-          console.log(key);
-          input.value += key;
-        }
-      }
-
+    for (const key of keyList) {
+      const keyButton = document.createElement("button");
       if (key === " ") {
-        spaceSound.play();
-        spaceSound.addEventListener("ended", () =>
-          keyButton.classList.remove("click")
-        );
-      } else {
-        keySound.play();
-        keySound.addEventListener("ended", () =>
-          keyButton.classList.remove("click")
-        );
+        keyButton.classList.add("space-bar");
       }
-    };
+      if (key === "⬅" || key === "⤶") {
+        keyButton.classList.add("backspace");
+      }
+      keyButton.id = key;
+      keyButton.innerText = key;
+      keyButton.classList.add("key");
 
-    keyButton.onclick = onClick;
-    container.append(keyButton);
-  }
+      if (key === "⬅") {
+        keyButton.innerHTML =
+          '<i class="fa-solid fa-delete-left backspace-button"></i>';
+      }
 
-  keyboardContainer.append(container);
+      if (key === "⤶") {
+        keyButton.type = "submit";
+        keyButton.innerHTML =
+          "<i class='fa-solid fa-arrow-turn-down enter-button'></i>";
+      }
+
+      const spaceSound = new Audio("spacebar.wav");
+      const keySound = new Audio("key.wav");
+
+      const onClick = (e) => {
+        keyButton.classList.add("click");
+        if (key !== "⤶") {
+          e.preventDefault();
+          if (key === "⬅") {
+            input.value = removeValue(input);
+          } else {
+            input.value += key;
+          }
+        }
+
+        if (key === " ") {
+          spaceSound.play();
+          spaceSound.addEventListener("ended", () =>
+            keyButton.classList.remove("click")
+          );
+        } else {
+          keySound.play();
+          keySound.addEventListener("ended", () =>
+            keyButton.classList.remove("click")
+          );
+        }
+      };
+
+      keyButton.onclick = onClick;
+      container.append(keyButton);
+    }
+
+    keyboardContainer.append(container);
+  });
+}
+
+if (window.screen.width > 765) {
+  createKeys();
+} else {
+  const copyKeys = [...KEYS];
+  const mobileKeys = [
+    // remove enter key
+    copyKeys[0].slice(0, copyKeys[0].length - 1),
+    // remove backspace key
+    copyKeys[1].slice(0, copyKeys[1].length - 1),
+
+    ["⤶", ...copyKeys[2], "⬅"],
+    copyKeys[3],
+  ];
+
+  createKeys(mobileKeys);
 }
 
 let disableKeypress = false;
 
 function isOtherKey(e) {
-  console.log(e);
   return e.key === "Control" || e.key === "Alt" || e.key === "Meta";
 }
 
 addEventListener("keydown", (e) => {
   if (e.key === "Backspace") {
-    console.log("backspace");
     const keyButton = document.getElementById("⬅");
     keyButton.classList.add("click");
     keyButton.click();
@@ -177,6 +210,7 @@ const responses = {
   CAMERON: "I see we're professional.",
   "CAMERON PAVAO": "What are you, the government?",
   "CAMERON VICTOR PAVAO": "Hi mom!",
+  ANDRA: "Hello my sweet!",
   POOP: "Ok now we're talking",
   SHIT: "You think I would stoop so low as to accept this?",
   BUTT: "A classic",
@@ -186,6 +220,7 @@ const responses = {
   "YES YOU": "I don't know, I mean we only just met...",
   "DO YOU HAVE GAMES ON YOUR PHONE": "Begone child",
   HELP: "Let me guess, trapped in the computer?",
+  PORN: "Not here I'm afraid... unless? 😳",
 };
 
 const pages = {
