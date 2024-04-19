@@ -67,6 +67,7 @@ body {
   background: none;
   border-radius: 8px;
   border: none;
+  color: black;
   background-color: var(--light-green);
   box-shadow: 0 0 8px 0 var(--dark-green);
   /* border: 2px solid darkslategray; */
