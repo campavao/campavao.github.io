@@ -14,6 +14,7 @@ body {
   --light-green: #e4ffe1;
   --yellow-green: #f4fdd9;
   --dark-green: #6a8d73;
+  /* --dark-green-shadow: rgba(106, 141, 115, 0.2) */
 
   margin: 0;
   font-family: "Jersey 25", sans-serif;
@@ -144,15 +145,67 @@ body {
 
 .section img {
   width: 100%;
-  border: 2px solid var(--dark-orange);
+  box-shadow: 1px 2px 3px 4px rgba(106, 141, 115, 0.2);
   border-radius: 12px;
 }
 
 .image-container a {
+  width: 100%;
+  min-height: 412px;
+  position: relative;
   display: flex;
   gap: 4px;
 }
 
+.about {
+  min-height: 100%;
+  background-color: var(--light-green);
+  padding: 40px;
+}
+
+.about p {
+  font-size: xx-large;
+  font-family: "Jersey 25", sans-serif;
+}
+
+.about li {
+  font-size: xx-large;
+}
+
+.enter-button {
+  min-width: 50px;
+  transform: rotate(90deg);
+}
+
+.backspace-button {
+  min-width: 50px;
+}
+
+.pic-1 {
+  z-index: 1;
+}
+
+.pic-1,
+.pic-2 {
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  max-width: 50%;
+  left: 32px;
+}
+
+.pic-2 {
+  top: 32px;
+  right: 32px;
+  left: unset;
+}
+
+.portrait {
+  max-width: unset;
+  height: 100%;
+}
+
+/* Mobile */
 @media screen and (max-width: 765px) {
   html {
     overflow-x: hidden;
@@ -192,31 +245,19 @@ body {
     max-width: unset;
   }
 
-  _::-webkit-full-page-media, _:future, :root #keyboard {
+  _::-webkit-full-page-media,
+  _:future,
+  :root #keyboard {
     padding-bottom: 165px;
-}
-}
+  }
 
-.about {
-  min-height: 100%;
-  background-color: var(--light-green);
-  padding: 40px;
-}
+  .image-container a {
+    height: unset;
+    gap: 12px;
+  }
 
-.about p {
-  font-size: xx-large;
-  font-family: "Jersey 25", sans-serif;
-}
-
-.about li {
-  font-size: xx-large;
-}
-
-.enter-button {
-  min-width: 50px;
-  transform: rotate(90deg);
-}
-
-.backspace-button {
-  min-width: 50px;
+  .pic-1, .pic-2 {
+    max-width: unset;
+    position: unset;
+  }
 }
