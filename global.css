@@ -10,10 +10,13 @@ html {
 
 body {
   --dark-orange: #f0a868;
+  --salmon: #f3d6c2;
   --light-orange: #ffe8c2;
   --light-green: #e4ffe1;
   --yellow-green: #f4fdd9;
   --dark-green: #6a8d73;
+  --forest: #405545;
+
   /* --dark-green-shadow: rgba(106, 141, 115, 0.2) */
 
   margin: 0;
@@ -125,8 +128,8 @@ body {
 #hint {
   width: 100%;
   text-align: center;
-  font-size: x-large;
-  color: var(--dark-orange);
+  font-size: xx-large;
+  color: var(--forest);
 }
 
 .container {
@@ -201,6 +204,18 @@ body {
 .portrait {
   max-width: unset;
   height: 100%;
+}
+
+.me {
+  border-radius: 25%;
+  box-shadow: 0px 14px 6px -4px rgba(106, 141, 115, 0.2)
+}
+
+.home {
+  margin-top: -24px;
+  padding-top: 48px;
+  height: 100%;
+  background-color: var(--salmon);
 }
 
 /* Mobile */

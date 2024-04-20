@@ -46,12 +46,10 @@ function createKeys(keys = KEYS) {
           "<i class='fa-solid fa-arrow-turn-down enter-button'></i>";
       }
 
-      let onClick;
-
       if (key === " ") {
         const spaceSound = new Audio("spacebar.mp3");
 
-        onClick = (e) => {
+        keyButton.onclick = (e) => {
           e.preventDefault();
           keyButton.classList.add("click");
           input.value += key;
@@ -63,7 +61,8 @@ function createKeys(keys = KEYS) {
       } else {
         const keySound = new Audio("key.mp3");
 
-        onClick = (e) => {
+        keyButton.onclick = (e) => {
+          e.stopPropagation();
           keyButton.classList.add("click");
 
           if (key !== "⤶") {
@@ -82,7 +81,6 @@ function createKeys(keys = KEYS) {
         };
       }
 
-      keyButton.onclick = onClick;
       container.append(keyButton);
     }
 
@@ -126,6 +124,8 @@ addEventListener("keydown", (e) => {
 });
 
 addEventListener("keypress", (e) => {
+  e.preventDefault();
+
   if (disableKeypress) {
     return;
   }
@@ -145,6 +145,8 @@ addEventListener("keypress", (e) => {
 });
 
 addEventListener("keyup", (e) => {
+  e.preventDefault();
+
   if (isOtherKey(e)) {
     disableKeypress = false;
     return;
@@ -168,7 +170,7 @@ const hint = document.getElementById("hint");
 function onFormSubmit(e) {
   e.preventDefault();
   const data = new FormData(e.currentTarget);
-  const search = data.get("search");
+  const search = data.get("search")?.trim();
   if (search) {
     const foundResponse = responses[search];
     if (foundResponse) {
@@ -214,7 +216,7 @@ const responses = {
   ASAP: "As soon as pigs start flying.",
   NAH: "Nah, not even close.",
   ALRIGHT: "Alright, but only if sanity takes a vacation.",
-  CAM: "That's me!",
+  CAM: "That's me",
   CAN: "That's not me and never will be.",
   CAMERON: "I see we're professional.",
   "CAMERON PAVAO": "What are you, the government?",
@@ -230,15 +232,37 @@ const responses = {
   "DO YOU HAVE GAMES ON YOUR PHONE": "Begone child",
   HELP: "Let me guess, trapped in the computer?",
   PORN: "Not here I'm afraid... unless? 😳",
+  HI: "Hello",
+  "HOW ARE YOU":
+    "I'm maybe the best I've ever been physically, which isn't saying much. How are you?",
+  FINE: "Then why did you say it like that.",
+  THANKS: "No problem",
+  "I LOVE YOU": "I love you too",
+  ZOOTIE: "Welcome Princess",
+  BYE: "See ya! Come back soon",
+  GOODBYE: "See ya! Come back soon",
+  TTYL: "See ya! Hit me back on AIM",
+  ROFL: "I like that you like to have a good time",
+  LOL: "Lmao",
+  LMAO: "Lol",
 };
 
 const pages = {
   PROJECTS: "projects.html",
+  FAILURES: "projects.html",
+  SUCCESSES: "projects.html",
   ABOUT: "about.html",
+  CAREER: "about.html",
+  "WHO IS THIS GUY": "about.html",
+  "WHAT IS THIS": "about.html",
+  "NUMBER ONE HATER": "about.html",
+  WHAT: "about.html",
+  // Hidden
+  WTF: "about.html",
 };
 
 const ALL_PAGES = Object.keys(pages);
-const randomIndex = Math.floor(Math.random() * ALL_PAGES.length);
+const randomIndex = Math.floor(Math.random() * (ALL_PAGES.length - 1));
 const randomPage = ALL_PAGES[randomIndex];
 input.placeholder = randomPage;
 
