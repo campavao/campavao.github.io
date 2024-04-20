@@ -40,7 +40,6 @@ body {
 
 .ani-input {
   width: 100%;
-  max-width: 300px;
   height: 36px;
   font-family: "Jersey 25", sans-serif;
   font-size: xx-large;
@@ -85,7 +84,6 @@ body {
   color: black;
   background-color: var(--light-green);
   box-shadow: 0 0 8px 0 var(--dark-green);
-  /* border: 2px solid darkslategray; */
 
   transform: translate3d(0, 0, 12px);
   transform-style: preserve-3d;

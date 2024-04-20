@@ -46,32 +46,41 @@ function createKeys(keys = KEYS) {
           "<i class='fa-solid fa-arrow-turn-down enter-button'></i>";
       }
 
-      const spaceSound = new Audio("spacebar.wav");
-      const keySound = new Audio("key.wav");
+      let onClick;
 
-      const onClick = (e) => {
-        keyButton.classList.add("click");
-        if (key !== "⤶") {
+      if (key === " ") {
+        const spaceSound = new Audio("spacebar.mp3");
+
+        onClick = (e) => {
           e.preventDefault();
-          if (key === "⬅") {
-            input.value = removeValue(input);
-          } else {
-            input.value += key;
-          }
-        }
-
-        if (key === " ") {
+          keyButton.classList.add("click");
+          input.value += key;
           spaceSound.play();
           spaceSound.addEventListener("ended", () =>
             keyButton.classList.remove("click")
           );
-        } else {
+        };
+      } else {
+        const keySound = new Audio("key.mp3");
+
+        onClick = (e) => {
+          keyButton.classList.add("click");
+
+          if (key !== "⤶") {
+            e.preventDefault();
+            if (key === "⬅") {
+              input.value = removeValue(input);
+            } else {
+              input.value += key;
+            }
+          }
+
           keySound.play();
           keySound.addEventListener("ended", () =>
             keyButton.classList.remove("click")
           );
-        }
-      };
+        };
+      }
 
       keyButton.onclick = onClick;
       container.append(keyButton);
@@ -224,7 +233,7 @@ const responses = {
 };
 
 const pages = {
-  GAMES: "games.html",
+  PROJECTS: "projects.html",
   ABOUT: "about.html",
 };
 
