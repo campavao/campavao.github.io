@@ -21,8 +21,11 @@ body {
 
   margin: 0;
   font-family: "Jersey 25", sans-serif;
+  font-style: normal;
   height: 100%;
+
 }
+
 
 .name {
   width: 100%;
@@ -144,11 +147,16 @@ body {
   padding: 20px;
 }
 
+.section {
+  max-width: 800px;
+}
+
 .section img {
   width: 100%;
   box-shadow: 1px 2px 3px 4px rgba(106, 141, 115, 0.2);
   border-radius: 12px;
 }
+
 
 .image-container a {
   width: 100%;
@@ -243,6 +251,7 @@ body {
   .image-container a {
     display: flex;
     flex-direction: column;
+    min-height: unset;
   }
 
   .key-row {
