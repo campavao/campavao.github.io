@@ -251,12 +251,17 @@ const pages = {
   PROJECTS: "projects.html",
   FAILURES: "projects.html",
   SUCCESSES: "projects.html",
+  WORDSMITH: "projects.html#wordsmith",
+  LAUGHFORMER: "projects.html#laughformer",
+  POKEORDLE: "projects.html#pokeordle",
+  "ANDREAS PLACES": "projects.html#andreasplaces",
   ABOUT: "about.html",
   CAREER: "about.html",
   "WHO IS THIS GUY": "about.html",
   "WHAT IS THIS": "about.html",
   "NUMBER ONE HATER": "about.html",
   WHAT: "about.html",
+  RESUME: "about.html",
   // Hidden
   WTF: "about.html",
 };

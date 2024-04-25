@@ -149,6 +149,7 @@ body {
 
 .section {
   max-width: 800px;
+  height: 100%;
 }
 
 .section img {
