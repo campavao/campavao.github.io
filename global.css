@@ -23,9 +23,7 @@ body {
   font-family: "Jersey 25", sans-serif;
   font-style: normal;
   height: 100%;
-
 }
-
 
 .name {
   width: 100%;
@@ -158,6 +156,9 @@ body {
   border-radius: 12px;
 }
 
+.section#trick-or-defeat img {
+  max-height: 500px;
+}
 
 .image-container a {
   width: 100%;
@@ -217,7 +218,7 @@ body {
 
 .me {
   border-radius: 25%;
-  box-shadow: 0px 14px 6px -4px rgba(106, 141, 115, 0.2)
+  box-shadow: 0px 14px 6px -4px rgba(106, 141, 115, 0.2);
 }
 
 .home {
@@ -279,7 +280,8 @@ body {
     gap: 12px;
   }
 
-  .pic-1, .pic-2 {
+  .pic-1,
+  .pic-2 {
     max-width: unset;
     position: unset;
   }
